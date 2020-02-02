@@ -12,7 +12,8 @@ io.on('connection', function(socket) {
 })
 
 app.use(bodyParser.json())
-app.post('/foo', (req, res) => {
-  console.log(req.body)
+
+app.post('/foo', ({ body }, res) => {
+  io.emit('this', { body })
   res.status(200).send('Hello World!')
 })
