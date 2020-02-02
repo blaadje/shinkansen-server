@@ -2,7 +2,7 @@ const express = require('express')
 const bodyParser = require('body-parser')
 const app = express()
 const port = 8080
-const io = require('socket.io')(http)
+const io = require('socket.io')(app)
 
 io.on('connection', function(socket) {
   console.log('a user connected')
