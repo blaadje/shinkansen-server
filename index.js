@@ -3,7 +3,7 @@ const app = express()
 const port = 8080
 
 app.post('/foo', (req, res) => {
-  console.log(req)
+  console.log(req.body)
   res.status(200).send('Hello World!')
 })
 
