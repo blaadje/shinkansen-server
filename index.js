@@ -14,7 +14,9 @@ io.on('connection', function(socket) {
 app.use(bodyParser.json())
 
 app.post('/', ({ body }, res) => {
-  console.info('Event from github received')
+  Object.keys(body).forEach(key => {
+    console.info(`Event ${key} from github received`)
+  })
   io.emit('event', { body })
-  res.status(200).send('Hello World!')
+  res.status(200).send()
 })
