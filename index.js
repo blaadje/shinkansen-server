@@ -15,10 +15,7 @@ app.use(bodyParser.json())
 
 app.post('/', ({ body }, res) => {
   Object.keys(body).forEach(key => {
-    console.log(
-      `%c Event ${key} from github received`,
-      'color: green; font-weight: bold;'
-    )
+    console.info(`Event {${key}} from github received`)
   })
   io.emit('event', { body })
   res.status(200).send()
