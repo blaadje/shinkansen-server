@@ -13,7 +13,8 @@ io.on('connection', function(socket) {
 
 app.use(bodyParser.json())
 
-app.post('/foo', ({ body }, res) => {
+app.post('/', ({ body }, res) => {
+  console.info('Event from github received')
   io.emit('event', { body })
   res.status(200).send('Hello World!')
 })
