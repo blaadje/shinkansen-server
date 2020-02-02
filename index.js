@@ -14,6 +14,6 @@ io.on('connection', function(socket) {
 app.use(bodyParser.json())
 
 app.post('/foo', ({ body }, res) => {
-  io.emit('this', { body })
+  io.emit('event', { body })
   res.status(200).send('Hello World!')
 })
