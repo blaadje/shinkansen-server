@@ -2,7 +2,10 @@ const express = require('express')
 const bodyParser = require('body-parser')
 const app = express()
 const port = 8080
-const io = require('socket.io')(app)
+const server = require('http').Server(app)
+const io = require('socket.io')(server)
+
+server.listen(port)
 
 io.on('connection', function(socket) {
   console.log('a user connected')
@@ -13,5 +16,3 @@ app.post('/foo', (req, res) => {
   console.log(req.body)
   res.status(200).send('Hello World!')
 })
-
-app.listen(port, () => console.log(`Example app listening on port ${port}!`))
