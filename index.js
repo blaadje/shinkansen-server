@@ -1,7 +1,7 @@
 const express = require('express')
 const bodyParser = require('body-parser')
 const app = express()
-const port = 8080
+const port = process.env.PORT || 5000
 const server = require('http').Server(app)
 const io = require('socket.io')(server)
 
@@ -12,6 +12,10 @@ io.on('connection', function(socket) {
 })
 
 app.use(bodyParser.json())
+
+app.get('/test', ({ body }, res) => {
+  res.send('test')
+})
 
 app.post('/', ({ body }, res) => {
   Object.keys(body).forEach(key => {
